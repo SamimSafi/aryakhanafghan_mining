@@ -66,6 +66,7 @@ const [projectsData, setProjectsData] = useState(null);
   // Fetch projects data for editing
   useEffect(() => {
     if (isEdit) {
+      fetchProjectCategories();
       const fetchProjectsData = async () => {
         try {
           const projects = await getProjects(id);

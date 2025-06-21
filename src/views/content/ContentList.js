@@ -31,8 +31,10 @@ const ContentList = () => {
   const debouncedSearch = useDebounce(searchTerm, 300);
 
   // Category options
-  const categoryOptions = [
-    { value: '', label: 'All Categories' }, // Added 'All' option
+    const categoryOptions = [
+    { value: 'CORE_VALUE', label: 'CORE_VALUE' },
+    { value: 'VISION', label: 'VISION' },
+    { value: 'MISSION', label: 'MISSION' },
     { value: 'ANNOUNCEMENTS', label: 'ANNOUNCEMENTS' },
     { value: 'AWARDS', label: 'AWARDS' },
     { value: 'SUSTAINABILITY', label: 'SUSTAINABILITY' },

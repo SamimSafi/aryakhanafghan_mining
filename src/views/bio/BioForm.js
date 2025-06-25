@@ -109,6 +109,7 @@ const BioForm = () => {
                     <MenuItem value="Email">Email</MenuItem>
                     <MenuItem value="Phone">Phone</MenuItem>
                     <MenuItem value="Address">Address</MenuItem>
+                    <MenuItem value="Branch_Address">Branch Address</MenuItem>
                   </Select>
                 )}
               />

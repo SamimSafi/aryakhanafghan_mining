@@ -111,7 +111,16 @@ const { activateTeam, deactivateTeam } = useTeamStore();
               <TableCell>{teamy.name}</TableCell>
               <TableCell>{teamy.name_pashto}</TableCell>
               <TableCell>{teamy.name_dari}</TableCell>
-              <TableCell>{teamy.department}</TableCell>
+              <TableCell>
+                          {teamy.department ? (
+                            <>
+                              <strong>{teamy.department.name}</strong><br />
+                              {<DescriptionComponent description={teamy.department.description} maxLength={20} />}
+                            </>
+                          ) : (
+                            'No Department Assigned'
+                          )}
+                        </TableCell>
               <TableCell>{teamy.priority}</TableCell>
               <TableCell>{teamy.jobTitle}</TableCell>
               <TableCell>{teamy.jobTitle_pashto}</TableCell>

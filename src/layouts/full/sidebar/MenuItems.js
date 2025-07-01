@@ -20,7 +20,8 @@ import {
   IconHandClick,
   IconEdit,
   IconBrandProducthunt,
-  IconMenuDeep
+  IconMenuDeep,
+  IconChartBar,
 } from '@tabler/icons-react';
 import { IconAddressBook } from '@tabler/icons-react';
 
@@ -136,6 +137,12 @@ const Menuitems = [
     title: 'Company Info',
     icon: IconBuilding,
     href: '/companyInfo',
+  },
+    {
+    id: uniqueId(),
+    title: 'Department',
+    icon: IconChartBar,
+    href: '/department',
   },
   {
     id: uniqueId(),

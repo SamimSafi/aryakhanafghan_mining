@@ -83,6 +83,9 @@ const SloganList = lazy(() => import('../views/slogan/SloganList'));
 const SloganForm = lazy(() => import('../views/slogan/SloganForm'));
 const SloganImageForm = lazy(() => import('../views/slogan/SloganImageForm'));
 
+const DepartmentList = lazy(() => import('../views/department/DepartmentList'));
+const DepartmentForm = lazy(() => import('../views/department/DepartmentForm'));
+
 const ContactList = lazy(() => import('../views/contact/ContactList'));
 const basePath = import.meta.env.VITE_BASE_PATH || '/';
 
@@ -169,6 +172,9 @@ const Router = [
           { path: '/slogan/create', element: <SloganForm /> },
           { path: '/slogan/edit/:id', element: <SloganForm /> },
           { path: '/slogan/:id/image', element: <SloganImageForm /> },
+          { path: '/department', element: <DepartmentList /> },
+          { path: '/department/create', element: <DepartmentForm /> },
+          { path: '/department/edit/:id', element: <DepartmentForm /> },
           { path: '*', element: <Navigate to="/auth/404" /> },
         ],
       },

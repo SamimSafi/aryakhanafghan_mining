@@ -21,11 +21,14 @@ import {
   LinkedIn as LinkedInIcon,
 } from '@mui/icons-material';
 import useTeamStore from '../../context/teamStore';
+import useDepartmentStore from '../../context/departmentStore';
 
 const TeamForm = () => {
   const { id } = useParams(); // Get Team ID from URL for editing
   const navigate = useNavigate();
   const { createTeam, updateTeam, getTeam } = useTeamStore();
+
+    const { Department, loading, fetchDepartment } = useDepartmentStore();
   const isEdit = !!id;
 
   const {
@@ -49,9 +52,14 @@ const TeamForm = () => {
       instagram: '',
       linkedIn: '',
       priority: 1,
+      departmentId: null,
       isActive: true,
     },
   });
+
+      useEffect(() => {
+      fetchDepartment();
+    }, [fetchDepartment]);
 
   useEffect(() => {
     if (isEdit) {
@@ -74,6 +82,7 @@ const TeamForm = () => {
             setValue('instagram', team.instagram || '');
             setValue('linkedIn', team.linkedIn || '');
             setValue('priority', team.priority || '');
+            setValue('departmentId', team.departmentId || '');
             setValue('isActive', team.isActive ?? true);
           } else {
             toast.error('Team member not found.');
@@ -111,6 +120,40 @@ const TeamForm = () => {
         </Typography>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Stack spacing={3}>
+
+             <Controller
+                                name="departmentId"
+                                  control={control}
+                                  rules={{ required: 'Department is required' }}
+                                  render={({ field }) => (
+                                    <TextField
+                                      {...field}
+                                      select
+                                      label="Department"
+                                      disabled={isSubmitting || loading}
+                                      error={!!errors.departmentId}
+                                      helperText={errors.departmentId?.message}
+                                      fullWidth
+                                      onChange={(e) => {
+                                        field.onChange(e); // Update the field value in React Hook Form
+                                        setValue('departmentId', e.target.value); // Programmatically set the value
+                                      }}
+                                    >
+                                      {loading ? (
+                                        <MenuItem disabled>Loading Department...</MenuItem>
+                                      ) : Department.length === 0 ? (
+                                        <MenuItem disabled>No Department available</MenuItem>
+                                              ) : (
+                                                Department.map((Department) => (
+                                                  <MenuItem key={Department.id} value={Department.id}>
+                                                    {Department.name} (ID: {Department.id})
+                                                  </MenuItem>
+                                                ))
+                                              )}
+                                         </TextField>
+                                            )}
+                         />
+
             {/* Name Fields */}
             <Grid container lg={12} md={12}  sm={12} spacing={3}>
               <Grid item xs={12} sm={4}>

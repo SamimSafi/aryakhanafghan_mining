@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import {
   Card,
@@ -13,6 +13,7 @@ import {
   InputAdornment,
   FormControlLabel,
   Checkbox,
+  MenuItem,
 } from '@mui/material';
 import {
   Facebook as FacebookIcon,
@@ -35,6 +36,7 @@ const TeamForm = () => {
     register,
     handleSubmit,
     setValue,
+    control,
     formState: { errors, isSubmitting },
   } = useForm({
     defaultValues: {
